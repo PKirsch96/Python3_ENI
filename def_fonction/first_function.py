@@ -1,11 +1,8 @@
 import random
 
 
-MIN = 0
-MAX = 100
-
-def demander_saisie_nombre(invite):
-    invite += f"entre {MIN} et {MAX} : "
+def demander_saisie_nombre(invite, minimum, maximum):
+    invite += f"entre {minimum} et {maximum} : "
     while True:
         saisie = input(invite)
         try:
@@ -18,16 +15,18 @@ def demander_saisie_nombre(invite):
     return saisie
 
 print("\nl'ordinateur choisi le nombre à devinner\n\n")
-nombre = random.randint(0,100)
+#nombre = random.randint(0,100)
+nombre = demander_saisie_nombre(f"Saisissez le nombre à deviner", 0, 50)
 
-print("Essayer de devinner le nombre de l'ordinateur")
-joueur  = demander_saisie_nombre(f"Saisissez un nombre") 
-while nombre != joueur:
-    joueur
+print("\n\nEssayer de devinner le nombre de l'ordinateur\n\n") 
+while True:
+    joueur  = demander_saisie_nombre(f"Saisissez un nombre", 0, 50) 
     if nombre > joueur:
         print("plus grand")
-    else:
+    elif nombre < joueur:
         print("plus petit")
-    joueur  = demander_saisie_nombre(f"Saisissez un nombre") 
+    else:
+        print(f"\nbravo c'était bien {joueur}")
+        break
        
-print(f"\nbravo c'était bien {joueur}")
+
