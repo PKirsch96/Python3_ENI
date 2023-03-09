@@ -4,8 +4,8 @@ MIN = 0
 MAX = 99
 
 
-def demander_saisie_nombre(invite, minimum, maximum):
-    invite += f"entre {minimum} et {maximum} : "
+def demander_saisie_nombre(invite, minimum=MIN, maximum=MAX):
+    invite += f" entre {minimum} et {maximum} : "
     while True:
         saisie = input(invite)
         try:
@@ -20,7 +20,7 @@ def demander_saisie_nombre(invite, minimum, maximum):
 
 print("\nl'ordinateur choisi le nombre à devinner\n\n")
 # nombre = random.randint(0,100)
-nombre = demander_saisie_nombre(f"Saisissez le nombre à deviner", 0, 50)
+nombre = demander_saisie_nombre(f"Saisissez le nombre à deviner")
 
 minimum = MIN
 maximum = MAX
