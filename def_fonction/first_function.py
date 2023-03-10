@@ -25,18 +25,7 @@ def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
             return saisie
 
 
-# nombre = random.randint(0,100)
-minimum = maximum = 0
-while True:
-    minimum = demander_saisie_nombre("choisissez le minimum")
-    maximum = demander_saisie_nombre("choisissez le maximum")
-    if maximum > minimum:
-        break
-
-nombre = demander_saisie_nombre_borne(
-    "Saisissez le nombre à deviner", minimum, maximum)
-
-while True:
+def jouer_un_coup(nombre, minimum, maximum):
 
     joueur = demander_saisie_nombre_borne(
         "Saisissez un nombre", minimum, maximum)
@@ -44,9 +33,51 @@ while True:
     if nombre > joueur:
         print("plus grand")
         minimum = joueur + 1
+        victoire = False
     elif nombre < joueur:
         print("plus petit")
         maximum = joueur - 1
+        victoire = False
     else:
         print(f"\nbravo c'était bien {joueur}")
-        break
+        victoire = True
+        minimum = maximum = joueur
+    return victoire, minimum, maximum
+
+
+def jouer_une_partie(nombre, minimum, maximum):
+    victoire = False
+    while not victoire:
+        victoire, minimum, maximum = jouer_un_coup(
+            nombre,
+            minimum,
+            maximum,
+        )
+
+
+def demander_saisie_du_nombre_mystere(minimum, maximum):
+    return demander_saisie_nombre_borne(
+        "Saisissez le nombre à deviner",
+        minimum,
+        maximum,
+    )
+
+
+def decider_bornes():
+    while True:
+        minimum = demander_saisie_nombre(
+            "Quelle est la borne minimale ?")
+        maximum = demander_saisie_nombre(
+            "Quelle est la borne maximale ?"
+        )
+        if maximum > minimum:
+            return minimum, maximum
+
+
+def jouer():
+    minimum, maximum = decider_bornes()
+    nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
+    jouer_une_partie(nombre, minimum, maximum)
+
+
+jouer()
