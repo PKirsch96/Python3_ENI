@@ -1,33 +1,53 @@
 # import random
+import sys
 
 MIN = 0
 MAX = 99
 
+def demander_saisie_nombre(invite):
+      
+    while True:  
+        
+        saisie = input(invite + ": ")  
+        
+        try:  
+            
+            saisie = int(saisie)  
+            
+        except:  
+            print("Seul les caractères [0-9] sont autorisés.", 
+                  file=sys.stderr)  
+        else:  
+            
+            return saisie 
 
-def demander_saisie_nombre(invite, minimum=MIN, maximum=MAX):
-    invite += f" entre {minimum} et {maximum} : "
-    while True:
-        saisie = input(invite)
-        try:
-            saisie = int(saisie)
-        except:
-            pass
-        else:
-            if 0 <= saisie <= 99:
-                break
-    return saisie
-
-
-print("\nl'ordinateur choisi le nombre à devinner\n\n")
+def demander_saisie_nombre_borne(invite, minimum=MIN, 
+                                 maximum=MAX):  
+    
+    invite = f"{invite} entre {minimum} et {maximum} inclus"
+    
+    while True: 
+        
+        saisie = demander_saisie_nombre(invite)  
+        
+        if minimum <= saisie <= maximum:  
+            return saisie 
+        
 # nombre = random.randint(0,100)
-nombre = demander_saisie_nombre(f"Saisissez le nombre à deviner")
-
-minimum = MIN
-maximum = MAX
-
-print("\n\nEssayer de devinner le nombre de l'ordinateur\n\n")
+minimum = maximum = 0
 while True:
-    joueur = demander_saisie_nombre(f"Saisissez un nombre", minimum, maximum)
+    minimum = demander_saisie_nombre("choisissez le minimum")
+    maximum = demander_saisie_nombre("choisissez le maximum")
+    if maximum > minimum:
+        break
+
+nombre = demander_saisie_nombre_borne("Saisissez le nombre à deviner", minimum, maximum)
+
+
+while True:
+    
+    joueur = demander_saisie_nombre_borne(f"Saisissez un nombre", minimum, maximum)
+    
     if nombre > joueur:
         print("plus grand")
         minimum = joueur + 1

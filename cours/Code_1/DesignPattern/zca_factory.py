@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+
+"""
+Patron de conception Fabrique utilisant la ZCA
+"""
+
+
+__author__ = "Sébastien CHAZALLET"
+__copyright__ = "Copyright 2012"
+__credits__ = ["Sébastien CHAZALLET", "InsPyration.org", "Éditions ENI"]
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Sébastien CHAZALLET"
+__email__ = "sebastien.chazallet@laposte.net"
+__status__ = "Production"
+
+
+from zope.interface import Interface
+from zope.interface import Attribute
+from zope.interface import implements
+
+
+class IChien(Interface):
+	nom = Attribute("""Nom du chien""")
+	def aboyer(filename):
+		"""Méthode permettant de le faire aboyer"""
+
+class Chien(object):
+	implements(IChien)
+	nom = u''
+	def __init__(self, nom):
+		self.nom = nom
+	def aboyer(self):
+		"""Méthode permettant de le faire aboyer"""
+		print('Ouaff')
+
+from zope.component.factory import Factory
+factory = Factory(Chien, 'Chien')
+
+bambou = factory('Bambou')
+

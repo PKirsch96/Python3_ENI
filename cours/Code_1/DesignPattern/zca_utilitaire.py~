@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+
+"""
+Patron de conception Utilitaire
+"""
+
+
+__author__ = "Sébastien CHAZALLET"
+__copyright__ = "Copyright 2012"
+__credits__ = ["Sébastien CHAZALLET", "InsPyration.org", "Éditions ENI"]
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Sébastien CHAZALLET"
+__email__ = "sebastien.chazallet@laposte.net"
+__status__ = "Production"
+
+
+from zope.interface import Interface
+from zope.interface import implements
+
+
+class IIdGenerator(Interface):
+	def get(self):
+		"""Fournit un id unique"""
+	def getIdFor(self, category):
+		"""Fournit un id unique pour chaque categorie"""
+
+class IdGenerator(object):
+	implements(IIdGenerator)
+	def __init__(self):
+		self.id = 0
+		self.ids = {}
+	def get(self):
+		"""Fournit un id unique"""
+		self.id += 1
+		return self.id
+	def getIdFor(self, category):
+		"""Fournit un id unique pour chaque categorie"""
+		if category not in self.ids.keys():
+			self.ids[category] = 0
+		self.ids[category] += 1
+		return self.ids[category]
+
+id_generator = IdGenerator()
+

@@ -1,0 +1,241 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+	Voici un exemple d'utilisation depuis un terminal bash:
+
+	$ ./test_deque.py
+	listes : 0.0000250340
+	deque1 : 0.0000128746
+	deque2 : 0.0000071526
+	---------------------
+	listes : 0.0015981197
+	deque1 : 0.0004830360
+	deque2 : 0.0004899502
+	---------------------
+	listes : 0.0490779877
+	deque1 : 0.0033481121
+	deque2 : 0.0033009052
+
+	Voici le même exemple depuis une console Python :
+
+	>>> from test_dequee import *
+	>>> main()
+	listes : 0.0000250340
+	deque1 : 0.0000128746
+	deque2 : 0.0000071526
+	---------------------
+	listes : 0.0015981197
+	deque1 : 0.0004830360
+	deque2 : 0.0004899502
+	---------------------
+	listes : 0.0490779877
+	deque1 : 0.0033481121
+	deque2 : 0.0033009052
+
+"""
+
+
+__author__ = "Sébastien CHAZALLET"
+__copyright__ = "Copyright 2012"
+__credits__ = ["Sébastien CHAZALLET", "InsPyration.org", "Éditions ENI"]
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Sébastien CHAZALLET"
+__email__ = "sebastien.chazallet@laposte.net"
+__status__ = "Production"
+
+
+from collections import deque
+from time import time
+
+
+def test1():
+	"""Cas d'utilisation classique pour un tampon
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise simplement une liste
+	"""
+	l=[]
+	l.insert(0, 1)
+	l.insert(0, 2)
+	l.pop()
+	l.insert(0, 3)
+	l.insert(0, 4)
+	l.pop()
+	l.pop()
+	l.insert(0, 5)
+	l.pop()
+	l.pop()
+
+def test2():
+	"""Cas d'utilisation classique pour un tampon
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la droite
+	et en le vidant par la gauche
+	"""
+	l = deque()
+	l.append(1)
+	l.append(2)
+	l.popleft()
+	l.append(3)
+	l.append(4)
+	l.popleft()
+	l.popleft()
+	l.append(5)
+	l.popleft()
+	l.popleft()
+
+def test3():
+	"""Cas d'utilisation classique pour un tampon
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la gauche
+	et en le vidant par la droite
+	"""
+	l = deque()
+	l.appendleft(1)
+	l.appendleft(2)
+	l.pop()
+	l.appendleft(3)
+	l.appendleft(4)
+	l.pop()
+	l.pop()
+	l.appendleft(5)
+	l.pop()
+	l.pop()
+
+def test11():
+	"""Cas d'utilisation d'un tampon qui est d'abord rempli puis vidé
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise simplement une liste
+	"""
+	l = []
+	for i in range(1000):
+		l.insert(0, i)
+	for i in range(1000):
+		l.pop()
+
+def test12():
+	"""Cas d'utilisation d'un tampon qui est d'abord rempli puis vidé
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la droite
+	et en le vidant par la gauche
+	"""
+	l = deque()
+	for i in range(1000):
+		l.append(i)
+	for i in range(1000):
+		l.popleft()
+
+def test13():
+	"""Cas d'utilisation d'un tampon qui est d'abord rempli puis vidé
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la gauche
+	et en le vidant par la droite
+	"""
+	l = deque()
+	for i in range(1000):
+		l.appendleft(i)
+	for i in range(1000):
+		l.pop()
+
+
+def test21():
+	"""Cas d'utilisation intermediaire
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise simplement une liste
+	"""
+	l = []
+	for j in range(10):
+		for i in range(1000):
+			l.insert(0, i)
+		for i in range(500):
+			l.pop()
+	for j in range(10):
+		for i in range(500):
+			l.insert(0, i)
+		for i in range(1000):
+			l.pop()
+
+def test22():
+	"""Cas d'utilisation intermediaire d'un tampon
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la droite
+	et en le vidant par la gauche
+	"""
+	l = deque()
+	for j in range(10):
+		for i in range(1000):
+			l.append(i)
+		for i in range(500):
+			l.popleft()
+	for j in range(10):
+		for i in range(500):
+			l.append(i)
+		for i in range(1000):
+			l.popleft()
+
+def test23():
+	"""Cas d'utilisation intermediaire d'un tampon
+	(FIFO, premier arrivé = premier parti)
+
+	On utilise l'objet deque en le remplissant par la gauche
+	et en le vidant par la droite
+	"""
+	l = deque()
+	for j in range(10):
+		for i in range(1000):
+			l.appendleft(i)
+		for i in range(500):
+			l.pop()
+	for j in range(10):
+		for i in range(500):
+			l.appendleft(i)
+		for i in range(1000):
+			l.pop()
+
+def main():
+	"""Lancement des tests et affichage des résultats"""
+	t0 = time()
+	test1()
+	t1 = time()
+	test2()
+	t2 = time()
+	test3()
+	t3 = time()
+	print('listes : %.10f' % (t1-t0))
+	print('deque1 : %.10f' % (t2-t1))
+	print('deque2 : %.10f' % (t3-t2))
+	t0 = time()
+	test11()
+	t1 = time()
+	test12()
+	t2 = time()
+	test13()
+	t3 = time()
+	print('---------------------')
+	print('listes : %.10f' % (t1-t0))
+	print('deque1 : %.10f' % (t2-t1))
+	print('deque2 : %.10f' % (t3-t2))
+	t0 = time()
+	test21()
+	t1 = time()
+	test22()
+	t2 = time()
+	test23()
+	t3 = time()
+	print('---------------------')
+	print('listes : %.10f' % (t1-t0))
+	print('deque1 : %.10f' % (t2-t1))
+	print('deque2 : %.10f' % (t3-t2))
+
+if __name__ == "__main__":
+	main()
+
