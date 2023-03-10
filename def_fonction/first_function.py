@@ -1,4 +1,4 @@
-import random
+# import random
 
 MIN = 0
 MAX = 99
