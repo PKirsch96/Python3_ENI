@@ -1,14 +1,12 @@
-"""
-Exercice: réaliser un jeu "Guess The number"
-
-PARTIE 1: Demander la saisie à l'utilisateur d'un nombre entre 0 et 100
-PARTIE 2: Faire deviner le nombre à l'utilisateur
-
-Utiliser une fonction pour capitaliser le code commun
-"""
-
+import sys
 MIN = 0
 MAX = 99
+
+
+def jouer():
+    minimum, maximum = decider_bornes()
+    nombre = demander_saisie_du_nombre_mystere()
+    jouer_une_partie(nombre, minimum, maximum)
 
 
 def demander_saisie_nombre(invite):
@@ -90,10 +88,7 @@ def decider_bornes():
             return minimum, maximum
 
 
-def jouer():
-    minimum, maximum = decider_bornes()
-    nombre = demander_saisie_du_nombre_mystere()
-    jouer_une_partie(nombre, minimum, maximum)
+
 
 
 jouer()
