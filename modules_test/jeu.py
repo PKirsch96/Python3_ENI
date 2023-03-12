@@ -89,7 +89,8 @@ def jouer():
 
         if len(gagnants) > 1 and prenom is not None:
             gagnants[prenom] = coups
-            tableau_trie = dict(sorted(gagnants.items(), key=lambda item: item[1]))
+            tableau_trie = dict(sorted(gagnants.items(),
+                                       key=lambda item: item[1]))
             print(tableau_trie)
 
         if not demander_saisie_oui_ou_non(
