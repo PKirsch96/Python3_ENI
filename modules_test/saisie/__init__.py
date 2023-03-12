@@ -11,3 +11,7 @@ from .booleen import (
     demander_saisie_oui_ou_non,
     demander_saisie_vrai_ou_faux,
 )
+
+from .menu import (
+    menu,
+)

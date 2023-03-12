@@ -45,4 +45,3 @@ def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
         if minimum <= saisie <= maximum:
             # On a ce que l'on veut, on quitte la boucle en quittant la fonction
             return saisie
-
