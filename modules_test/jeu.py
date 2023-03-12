@@ -1,6 +1,5 @@
 
 from saisie import (
-    demander_saisie_nombre,
     demander_saisie_nombre_borne,
     demander_saisie_oui_ou_non,
     menu,

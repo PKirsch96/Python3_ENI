@@ -15,7 +15,7 @@ def menu():
 
         try:
             int(level) in LEVEL
-        except:
+        except Exception:
             print("Seul les caractères [1-4] sont autorisés.", file=sys.stderr)
         else:
             return level, aide

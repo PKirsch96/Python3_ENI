@@ -11,7 +11,7 @@ def demander_saisie_oui_ou_non(invite):
     """Par défaut, toute réponse non comprise vaut NON"""
     try:
         return input(invite).lower() in OUI
-    except:
+    except Exception:
         return False
 
 
@@ -19,5 +19,5 @@ def demander_saisie_vrai_ou_faux(invite):
     """Par défaut, toute réponse non comprise vaut FAUX"""
     try:
         return input(invite).lower() in VRAI
-    except:
+    except Exception:
         return False

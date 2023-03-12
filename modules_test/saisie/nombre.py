@@ -24,11 +24,13 @@ def demander_saisie_nombre(invite):
 
         try:
             saisie = int(saisie)
-        except:
+        except Exception:
             print("Seul les caractères [0-9] sont autorisés.", file=sys.stderr)
         else:
-            # On a ce que l'on veut, on quitte la boucle en quittant la fonction
+            # On a ce que l'on veut, on quitte la boucle
+            # en quittant la fonction
             return saisie
+
 
 def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
     """
@@ -43,5 +45,6 @@ def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
         saisie = demander_saisie_nombre(invite)
 
         if minimum <= saisie <= maximum:
-            # On a ce que l'on veut, on quitte la boucle en quittant la fonction
+            # On a ce que l'on veut, on quitte la boucle
+            # en quittant la fonction
             return saisie
