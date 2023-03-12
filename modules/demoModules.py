@@ -2,6 +2,14 @@ import sys
 
 MIN = 0
 MAX = 99
+OUI = ("o", "oui", "y", "yes", "1")
+
+
+def demander_saisie_oui_ou_non(invite):
+    try:
+        return input(invite).lower() in OUI
+    except Exception:
+        return False
 
 
 def demander_saisie_nombre(invite):
@@ -71,8 +79,12 @@ def jouer_une_partie(nombre, minimum, maximum):
 
 def jouer():
     minimum, maximum = decider_bornes()
-    nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
-    jouer_une_partie(nombre, minimum, maximum)
+    while True:
+        nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
+        jouer_une_partie(nombre, minimum, maximum)
+        if not demander_saisie_oui_ou_non("Souhaiteez-vous refaire une nouvelle partie ?"):
+            print("A bientot")
+            return
 
 
 if __name__ == '__main__':
