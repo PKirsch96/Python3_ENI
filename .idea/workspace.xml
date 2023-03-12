@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b9ee518-b0e9-48b9-a01a-4424d88ba1c6" name="Changes" comment="paul" />
+    <list default="true" id="1b9ee518-b0e9-48b9-a01a-4424d88ba1c6" name="Changes" comment="paul">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +47,7 @@
       <updated>1678631896843</updated>
       <workItem from="1678631900795" duration="1063000" />
       <workItem from="1678632989565" duration="1584000" />
+      <workItem from="1678653363546" duration="559000" />
     </task>
     <task id="LOCAL-00001" summary="paul">
       <created>1678632597374</created>
@@ -99,6 +102,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="paul" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Python_cours$nombre.coverage" NAME="nombre Coverage Results" MODIFIED="1678653824559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules_test/saisie" />
+    <SUITE FILE_PATH="coverage/Python_cours$lanceur.coverage" NAME="lanceur Coverage Results" MODIFIED="1678653829780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules_test" />
     <SUITE FILE_PATH="coverage/Python_cours$demoModules.coverage" NAME="demoModules Coverage Results" MODIFIED="1678636332175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules" />
   </component>
 </project>
