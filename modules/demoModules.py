@@ -52,7 +52,7 @@ def decider_bornes():
         minimum = demander_saisie_nombre("Quelle est la borne minimale ?")
         maximum = demander_saisie_nombre("Quelle est la borne maximale ?")
         if maximum > minimum:
-            return minimum, maximu
+            return minimum, maximum
 
 
 def demander_saisie_du_nombre_mystere(minimum, maximum):
