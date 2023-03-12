@@ -1,11 +1,4 @@
-"""
-Exercice: réaliser un jeu "Guess The number"
-
-PARTIE 1: Demander la saisie à l'utilisateur d'un nombre entre 0 et 100
-PARTIE 2: Faire deviner le nombre à l'utilisateur
-
-Utiliser une fonction pour capitaliser le code commun
-"""
+import sys
 
 MIN = 0
 MAX = 99
@@ -26,8 +19,10 @@ def demander_saisie_nombre(invite):
         except:
             print("Seul les caractères [0-9] sont autorisés.", file=sys.stderr)
         else:
-            # On a ce que l'on veut, on quitte la boucle en quittant la fonction
+            # On a ce que l'on veut, on quitte
+            # la boucle en quittant la fonction
             return saisie
+
 
 def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
     """
@@ -73,7 +68,7 @@ def decider_bornes():
             return minimum, maximum
 
 
-def demander_saisie_du_nombre_mystere():
+def demander_saisie_du_nombre_mystere(minimum, maximum):
     return demander_saisie_nombre_borne("Saisissez le nombre à deviner",
                                         minimum, maximum)
 
@@ -100,4 +95,3 @@ if __name__ == '__main__':
     jouer()
 else:
     print("Le module a été importé")
-
