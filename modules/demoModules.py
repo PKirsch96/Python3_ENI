@@ -3,14 +3,10 @@ import sys
 MIN = 0
 MAX = 99
 
-def demander_saisie_nombre(invite):
-    """
-    Cette fonction se contente de vérifier que l'on a bien à faire à un nombre
-    """
-    while True:
-        # On entre dans une boucle infinie
 
-        # On demande la saisie d'un nombre
+def demander_saisie_nombre(invite):
+    while True:
+
         print(invite, end=": ")
         saisie = input()
 
@@ -19,32 +15,23 @@ def demander_saisie_nombre(invite):
         except:
             print("Seul les caractères [0-9] sont autorisés.", file=sys.stderr)
         else:
-            # On a ce que l'on veut, on quitte
-            # la boucle en quittant la fonction
+
             return saisie
 
 
 def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
-    """
-    Cette fonction utilise la précédente et rajoute une post-condition
-    sur les bornes du nombre à saisir
-    """
     while True:
-        # On entre dans une boucle infinie
 
-        # On demande la saisie d'un nombre
         invite = "{} entre {} et {} inclus".format(invite, minimum, maximum)
         saisie = demander_saisie_nombre(invite)
 
         if minimum <= saisie <= maximum:
-            # On a ce que l'on veut, on quitte la boucle en quittant la fonction
             return saisie
 
 
 def jouer_un_coup(nombre, minimum, maximum):
     essai = demander_saisie_nombre_borne("Devinez le nombre", minimum, maximum)
 
-    # On teste si l'essai est correct ou non
     if essai < nombre:
         print("Trop petit")
         minimum = essai + 1
@@ -75,8 +62,6 @@ def demander_saisie_du_nombre_mystere(minimum, maximum):
 
 def jouer_une_partie(nombre, minimum, maximum):
     while True:
-        # On entre dans une boucle infinie
-        # qui permet de jouer plusieurs coups
 
         victoire, minimum, maximum = jouer_un_coup(nombre, minimum, maximum)
 
