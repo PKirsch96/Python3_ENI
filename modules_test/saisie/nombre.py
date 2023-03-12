@@ -41,7 +41,7 @@ def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
         # On entre dans une boucle infinie
 
         # On demande la saisie d'un nombre
-        invite = "{} entre {} et {} inclus".format(invite, minimum, maximum)
+        invite = f"{invite} entre {minimum} et {maximum} inclus"
         saisie = demander_saisie_nombre(invite)
 
         if minimum <= saisie <= maximum:
