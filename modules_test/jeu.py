@@ -34,43 +34,42 @@ def demander_saisie_du_nombre_mystere(minimum, maximum):
                                         minimum, maximum)
 
 
-def jouer_une_partie(nombre, minimum, maximum, aide):
+def jouer_une_partie(nombre, minimum, maximum, aide, nb_coups):
+    coups = 0
     while True:
         # On entre dans une boucle infinie
         # qui permet de jouer plusieurs coups
 
         victoire, minimum, maximum = jouer_un_coup(nombre,
                                                    minimum, maximum, aide)
-
-        if (victoire):
+        coups += 1
+        if coups == int(nb_coups):
+            return print("défaite !")
+        elif (victoire):
             return
 
 
 def choix_du_joueur():
     level, aide = menu()
-    choix = int(level)
-    niveaux = (100, 1000, 1000000, 1000000000000)
+    lvl = (100, 1000, 1000000, 1000000000000)
+    nb_coups_lvl = (9, 20, 40, 60)
     while True:
         minimum = 0
-        if choix == 1:
-            maximum = niveaux[0]
-        if choix == 2:
-            maximum = niveaux[1]
-        if choix == 3:
-            maximum = niveaux[2]
-        if choix == 4:
-            maximum = niveaux[3]
+        maximum = lvl[(int(level)-1)]
+        nb_coups = nb_coups_lvl[(int(level)-1)]
 
         if maximum > minimum:
-            return minimum, maximum, aide
+            return minimum, maximum, aide, nb_coups
 
 
 def jouer():
-    minimum, maximum, aide = choix_du_joueur()
+    minimum, maximum, aide, nb_coups = choix_du_joueur()
     while True:
         nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
-        jouer_une_partie(nombre, minimum, maximum, aide)
-        if not demander_saisie_oui_ou_non("Souhaitez-vous refaire une nouvelle partie ?"):
+        jouer_une_partie(nombre, minimum, maximum, aide, nb_coups)
+        if not demander_saisie_oui_ou_non(
+            "Souhaitez-vous refaire une nouvelle partie ?"
+        ):
             print("A bientôt !")
             return
         elif demander_saisie_oui_ou_non("changer de niveau ? : "):
