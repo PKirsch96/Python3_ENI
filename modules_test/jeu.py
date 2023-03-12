@@ -45,7 +45,8 @@ def jouer_une_partie(nombre, minimum, maximum, aide, nb_coups):
         if coups == int(nb_coups):
             return print("défaite !")
         elif (victoire):
-            return
+            prenom = input("quel est votre prénom ? : ")
+            return prenom, coups
 
 
 def choix_du_joueur():
@@ -62,10 +63,18 @@ def choix_du_joueur():
 
 
 def jouer():
+    gagnants = {}
     minimum, maximum, aide, nb_coups = choix_du_joueur()
     while True:
         nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
-        jouer_une_partie(nombre, minimum, maximum, aide, nb_coups)
+        prenom, coups = jouer_une_partie(
+            nombre, minimum, maximum, aide, nb_coups
+            )
+        gagnants[prenom] = coups
+        if len(gagnants) > 0:
+            tableau_trie = dict(sorted(gagnants.items(),
+                                       key=lambda item: item[1]))
+            print(tableau_trie)
         if not demander_saisie_oui_ou_non(
             "Souhaitez-vous refaire une nouvelle partie ?"
         ):
