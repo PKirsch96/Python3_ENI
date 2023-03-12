@@ -82,7 +82,7 @@ def jouer():
     while True:
         nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
         jouer_une_partie(nombre, minimum, maximum)
-        if not demander_saisie_oui_ou_non("Souhaiteez-vous refaire une nouvelle partie ?"):
+        if not demander_saisie_oui_ou_non("Souhaiteez-vous refaire une nouvelle partie ? : "):
             print("A bientot")
             return
 
