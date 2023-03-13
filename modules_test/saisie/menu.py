@@ -11,7 +11,7 @@ def menu():
         level = input(
             "Bonjour choisissez un niveau de difficulté de 1 à 4 : "
             )
-        aide = demander_saisie_oui_ou_non("voulez vous activez l'aide ? :")
+        aide = demander_saisie_oui_ou_non("voulez vous activez l'aide ? : ")
 
         try:
             int(level) in LEVEL

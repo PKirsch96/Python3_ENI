@@ -44,7 +44,4 @@ def demander_saisie_nombre_borne(invite, minimum=MIN, maximum=MAX):
         invite = f"{invite} entre {minimum} et {maximum} inclus"
         saisie = demander_saisie_nombre(invite)
 
-        if minimum <= saisie <= maximum:
-            # On a ce que l'on veut, on quitte la boucle
-            # en quittant la fonction
-            return saisie
+        return saisie

@@ -10,12 +10,12 @@ def jouer_un_coup(nombre, minimum, maximum, aide):
     essai = demander_saisie_nombre_borne("Devinez le nombre", minimum, maximum)
 
     # On teste si l'essai est correct ou non
-    if essai < nombre:
+    if essai < nombre or essai < minimum:
         print("Trop petit")
         if aide:
             minimum = essai + 1
         victoire = False
-    elif essai > nombre:
+    elif essai > nombre or essai > maximum:
         print("Trop grand")
         if aide:
             maximum = essai - 1
@@ -36,6 +36,7 @@ def demander_saisie_du_nombre_mystere(minimum, maximum):
 def jouer_une_partie(nombre, minimum, maximum, aide, nb_coups):
 
     coups = 0
+    gagnants = {}
 
     while True:
         # On entre dans une boucle infinie
@@ -47,20 +48,32 @@ def jouer_une_partie(nombre, minimum, maximum, aide, nb_coups):
         coups += 1
 
         if coups == int(nb_coups):
-            prenom = None
-            return print("défaite !"), prenom, coups
+            print("défaite !")
+
+            tableau_gagnants = dict(sorted(
+                gagnants.items(), key=lambda item: item[1]))
+
+            return tableau_gagnants
 
         elif (victoire):
-            prenom = input("quel est votre prénom ? : ")
-            return prenom, coups
+            prenom = input(
+                "quel est votre prénom ? : "
+                ).lower().replace(" ", "", 6)
+
+            gagnants[prenom] = coups
+
+            tableau_gagnants = dict(sorted(
+                gagnants.items(), key=lambda item: item[1]))
+
+            return tableau_gagnants
 
 
 def choix_du_joueur():
 
     level, aide = menu()
-
+    # tableau pour définir le nombre max
     lvl = (100, 1000, 1000000, 1000000000000)
-
+    # nombres de coups autorisé en fonction du niveau choisi
     nb_coups_lvl = (9, 20, 40, 60)
 
     while True:
@@ -77,26 +90,23 @@ def choix_du_joueur():
 
 
 def jouer():
-    gagnants = {}
+    tableau_gagnants = {}
     minimum, maximum, aide, nb_coups = choix_du_joueur()
     while True:
 
         nombre = demander_saisie_du_nombre_mystere(minimum, maximum)
 
-        prenom, coups = jouer_une_partie(
-            nombre, minimum, maximum, aide, nb_coups
-            )
+        gagnants = jouer_une_partie(nombre, minimum, maximum, aide, nb_coups)
 
-        if len(gagnants) > 1 and prenom is not None:
-            gagnants[prenom] = coups
-            tableau_trie = dict(sorted(gagnants.items(),
-                                       key=lambda item: item[1]))
-            print(tableau_trie)
+        tableau_gagnants.update(gagnants)
+
+        print(tableau_gagnants)
 
         if not demander_saisie_oui_ou_non(
-            "Souhaitez-vous refaire une nouvelle partie ?"
+            "Souhaitez-vous refaire une nouvelle partie ? : "
         ):
             print("A bientôt !")
             return
+
         elif demander_saisie_oui_ou_non("changer de niveau ? : "):
-            minimum, maximum, aide = choix_du_joueur()
+            minimum, maximum, aide, nb_coups = choix_du_joueur()
