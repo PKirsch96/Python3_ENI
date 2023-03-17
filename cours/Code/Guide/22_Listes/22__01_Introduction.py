@@ -69,11 +69,19 @@ print("liste = ", liste)
 
 def exercice1():
     liste = ["P", "t"]
-    # TODO
+    liste.pop()
+    liste.extend(["y", "t", "h", "o", "n"])
     assert "".join(liste) == "Python"
+
 
 def exercice2():
     liste = [1, 4, 2, 5, 4, 3, 4, 7, 5, 8, 9]
-    # TODO
+    liste.sort()
+    for i in [1, 2]:
+        liste.remove(4)
+    del liste[5:]
     assert liste == list(range(1, 6))
 
+
+exercice1()
+exercice2()

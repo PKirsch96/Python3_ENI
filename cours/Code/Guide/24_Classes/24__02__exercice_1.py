@@ -28,6 +28,24 @@ class Point:
             other = Point(0, 0, 0)
         return ((self.x-other.x)**2 + (self.y-other.y)**2 + (self.z-other.z)**2) ** (1 / 2)
 
+    def __add__(self, other):
+        return Point(self.x + other.x,
+                     self.y + other.y,
+                     self.z + other.z)
+
+    def __sub__(self, other):
+        return Point(self.x - other.x,
+                     self.y - other.y,
+                     self.z - other.z)
+
+    def __mul__(self, other):
+        return Point(self.x * other.x,
+                     self.y * other.y,
+                     self.z * other.z)
+
+    def __str__(self):
+        return self.x, self.y, self.z
+
 
 p = Point(1, 2, 3)
 p.afficher()
@@ -35,4 +53,15 @@ print("|p| =", p.module())
 print("distance entre p et (1, 2, 5) est ", p.distance(Point(1, 2, 5)))
 print("|p| =", p.distance_et_module())
 print("distance entre p et (1, 2, 5) est ", p.distance_et_module(Point(1, 2, 5)))
+print("p = ", p.__str__())
+x = p.__add__(Point(2, 3, 4))
+print("l'ajout entre deux classe est est ", x.__str__())
+print("p = ", p.__str__())
+x = p.__mul__(Point(2, 3, 4))
+print("l'ajout entre deux classe est est ", x.__str__())
+print("p = ", p.__str__())
+x = p.__sub__(Point(2, 3, 4))
+print("l'ajout entre deux classe est est ", x.__str__())
+
+
 

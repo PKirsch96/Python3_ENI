@@ -52,7 +52,7 @@ class Point:
 
     def __str__(self):
         """Représentation d'un point sous la forme d'une chaîne de caractère"""
-        return "Point ({self.x}, {self.y}, {self.z})".format(self=self)
+        return f"Point ({self.x}, {self.y}, {self.z})"
 
 
 print("Mise en évidence de l'optimisation")
