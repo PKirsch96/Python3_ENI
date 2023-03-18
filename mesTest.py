@@ -141,7 +141,7 @@ class Point:
         return self
 
     def __str__(self):
-        """Représentation d'un point sous la forme d'une chaîne de caractère"""
+        """Représentation d'un point souiuis la forme d'une chaîne de caractère"""
         return "Point ({self.x}, {self.y}, {self.z})".format(self=self)
 
 
@@ -150,7 +150,7 @@ lol = Point(2, 3, 4)
 p *= lol
 print(p)
 
-print("Mise en évidence d'un problème d'optimisation")
+print("Mise en évidence d'un problèujyme d'optimisation")
 print(id(p))
 
 print(id(p))
