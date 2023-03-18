@@ -107,18 +107,40 @@ carnet["Sébastien"] = "0408060204"
 # print("avec un autre print grâce à : end=\" \"")
 
 
-class Point:
+class AffichableMixin:
+
+    str_format = "PrettyPrintableObject"
+
+    def __str__(self) -> str:
+        return self.str_format.format(self=self)
+
+
+class NomAutomatiqueMixin:
+
+    ordinal = 65
+
+    def __init__(self) -> None:
+        self.lettre = chr(NomAutomatiqueMixin.ordinal)
+        NomAutomatiqueMixin.ordinal += 1
+
+
+class Point(AffichableMixin, NomAutomatiqueMixin):
     """Représente un point dans l'espace"""
+
+    str_format = "Point {self.lettre} ({self.x}, {self.y}, {self.z})"
 
     def __init__(self, x, y, z):
         """Méthode d'initialisation d'un point dans l'espace"""
+        super().__init__()
         self.x, self.y, self.z = x, y, z
 
     def distance(self, other=None):
-        """Renvoi la distance par rapport à un autre point ou par défaut à l'origine"""
+        """Renvoi la distance par rapport à un autre
+        point ou par défaut à l'origine"""
         if other is None:
             other = Point(0, 0, 0)
-        return ((self.x-other.x)**2 + (self.y-other.y)**2 + (self.z-other.z)**2) ** (1 / 2)
+        return ((self.x-other.x)**2 + (self.y-other.y)**2
+                + (self.z-other.z)**2) ** (1 / 2)
 
     def __iadd__(self, other):
         self.x += other.x
@@ -140,20 +162,18 @@ class Point:
         self.z *= other.z
         return self
 
-    def __str__(self):
-        """Représentation d'un point souiuis la forme d'une chaîne de caractère"""
-        return "Point ({self.x}, {self.y}, {self.z})".format(self=self)
+
+class Point2D(Point):
+
+    str_format = "Point2D {self.lettre} ({self.x}, {self.y})"
+
+    def __init__(self, x, y):
+        super().__init__(x, y, 0)
 
 
 p = Point(1, 2, 3)
-lol = Point(2, 3, 4)
-p *= lol
 print(p)
-
-print("Mise en évidence d'un problèujyme d'optimisation")
-print(id(p))
-
-print(id(p))
+p = Point2D(3, 4)
 print(p)
 
 
