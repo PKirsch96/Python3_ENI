@@ -165,7 +165,7 @@ class Point(AffichableMixin, NomAutomatiqueMixin):
 
 class Point2D(Point):
 
-    str_format = "Point2D {self.lettre} ({self.x}, {self.y})"
+    str_format = "Point,2D {self.lettre} ({self.x}, {self.y})"
 
     def __init__(self, x, y):
         super().__init__(x, y, 0)
