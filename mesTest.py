@@ -91,6 +91,7 @@ carnet["Sébastien"] = "0408060204"
 # print(carte)
 # print(score)
 # print("------------------------------------------------------------")
+
 #
 # carte = choice(liste_cartes)
 # score += cartes[carte]
@@ -105,75 +106,92 @@ carnet["Sébastien"] = "0408060204"
 
 # print("je rajoute un bout de phrase | ", end=" ")
 # print("avec un autre print grâce à : end=\" \"")
+#
+#
+# class AffichableMixin:
+#
+#     str_format = "PrettyPrintableObject"
+#
+#     def __str__(self) -> str:
+#         return self.str_format.format(self=self)
+#
+#
+# class NomAutomatiqueMixin:
+#
+#     ordinal = 65
+#
+#     def __init__(self) -> None:
+#         self.lettre = chr(NomAutomatiqueMixin.ordinal)
+#         NomAutomatiqueMixin.ordinal += 1
+#
+#
+# class Point(AffichableMixin, NomAutomatiqueMixin):
+#     """Représente un point dans l'espace"""
+#
+#     str_format = "Point {self.lettre} ({self.x}, {self.y}, {self.z})"
+#
+#     def __init__(self, x, y, z):
+#         """Méthode d'initialisation d'un point dans l'espace"""
+#         super().__init__()
+#         self.x, self.y, self.z = x, y, z
+#
+#     def distance(self, other=None):
+#         """Renvoi la distance par rapport à un autre
+#         point ou par défaut à l'origine"""
+#         if other is None:
+#             other = Point(0, 0, 0)
+#         return ((self.x-other.x)**2 + (self.y-other.y)**2
+#                 + (self.z-other.z)**2) ** (1 / 2)
+#
+#     def __iadd__(self, other):
+#         self.x += other.x
+#         self.y += other.y
+#         self.z += other.z
+#         return self
+#
+#     def __sub__(self, other):
+#         """Opérateur de soustraction"""
+#         self.x -= other.x
+#         self.y -= other.y
+#         self.z -= other.z
+#         return self
+#
+#     def __mul__(self, other):
+#         """Opérateur de multiplication"""
+#         self.x *= other.x
+#         self.y *= other.y
+#         self.z *= other.z
+#         return self
+#
+#
+# class Point2D(Point):
+#
+#     str_format = "Point2D {self.lettre} ({self.x}, {self.y})"
+#
+#     def __init__(self, x, y):
+#         super().__init__(x, y, 0)
+#
+#
+# p = Point(1, 2, 3)
+# print(p)
+# p = Point2D(3, 4)
+# print(p)
 
 
-class AffichableMixin:
-
-    str_format = "PrettyPrintableObject"
-
-    def __str__(self) -> str:
-        return self.str_format.format(self=self)
-
-
-class NomAutomatiqueMixin:
-
-    ordinal = 65
-
-    def __init__(self) -> None:
-        self.lettre = chr(NomAutomatiqueMixin.ordinal)
-        NomAutomatiqueMixin.ordinal += 1
-
-
-class Point(AffichableMixin, NomAutomatiqueMixin):
-    """Représente un point dans l'espace"""
-
-    str_format = "Point {self.lettre} ({self.x}, {self.y}, {self.z})"
-
-    def __init__(self, x, y, z):
-        """Méthode d'initialisation d'un point dans l'espace"""
-        super().__init__()
-        self.x, self.y, self.z = x, y, z
-
-    def distance(self, other=None):
-        """Renvoi la distance par rapport à un autre
-        point ou par défaut à l'origine"""
-        if other is None:
-            other = Point(0, 0, 0)
-        return ((self.x-other.x)**2 + (self.y-other.y)**2
-                + (self.z-other.z)**2) ** (1 / 2)
-
-    def __iadd__(self, other):
-        self.x += other.x
-        self.y += other.y
-        self.z += other.z
-        return self
+class Test:
+    def __init__(self, chiffre):
+        self.chiffre = chiffre
 
     def __sub__(self, other):
-        """Opérateur de soustraction"""
-        self.x -= other.x
-        self.y -= other.y
-        self.z -= other.z
-        return self
+        return self.chiffre - other
 
-    def __mul__(self, other):
-        """Opérateur de multiplication"""
-        self.x *= other.x
-        self.y *= other.y
-        self.z *= other.z
-        return self
+    def __neg__(self):
+        return - self.chiffre
 
 
-class Point2D(Point):
+lol = Test(25)
 
-    str_format = "Point2D {self.lettre} ({self.x}, {self.y})"
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
-    def __init__(self, x, y):
-        super().__init__(x, y, 0)
-
-
-p = Point(1, 2, 3)
-print(p)
-p = Point2D(3, 4)
-print(p)
-
-
+if (n := len(a)) > 10:
+    print(f"list is too long({n} elements, expected <=10)")
