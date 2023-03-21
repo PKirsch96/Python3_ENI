@@ -195,3 +195,15 @@ a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 if (n := len(a)) > 10:
     print(f"list is too long({n} elements, expected <=10)")
+
+
+str = "1234"
+
+print(list(str))
+
+
+# def f(x): return x**2
+
+lolilol = list(filter(lambda x: x < 81, map(lambda x: x**2, range(10))))
+
+print(lolilol)
