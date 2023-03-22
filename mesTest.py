@@ -245,30 +245,34 @@ carnet["Sébastien"] = "0408060204"
 
 #     n += 1
 
-def g():
-    yield 1
-    yield 2
-    yield 3
+# def g():
+#     yield 1
+#     yield 2
+#     yield 3
 
 
-gen = g()
-def f():
-    a = 1
-    while True:
-        a *= 2
-        if a > 1_000_000:
-            break
-    return a
+# gen = g()
+# def f():
+#     a = 1
+#     while True:
+#         a *= 2
+#         if a > 1_000_000:
+#             break
+#     return a
 
 
-print(next(gen))
-print(next(gen))
-print(next(gen))
-def positive(lol):
-    for a in lol:
-        if a < 0:
-            continue
-        print(a)
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
+# def positive(lol):
+#     for a in lol:
+#         if a < 0:
+#             continue
+#         print(a)
 
 
-positive([1, -5, 25, -47, 5, -5, -7, -9, 2])
+# positive([1, -5, 25, -47, 5, -5, -7, -9, 2])
+
+liste = [a**2 for a in range(10)]
+
+print(liste)
