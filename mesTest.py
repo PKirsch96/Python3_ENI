@@ -178,32 +178,66 @@ carnet["Sébastien"] = "0408060204"
 # print(p)
 
 
-class Test:
-    def __init__(self, chiffre):
-        self.chiffre = chiffre
+# class Test:
+#     def __init__(self, chiffre):
+#         self.chiffre = chiffre
 
-    def __sub__(self, other):
-        return self.chiffre - other
+#     def __sub__(self, other):
+#         return self.chiffre - other
 
-    def __neg__(self):
-        return - self.chiffre
-
-
-lol = Test(25)
-
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-if (n := len(a)) > 10:
-    print(f"list is too long({n} elements, expected <=10)")
+#     def __neg__(self):
+#         return - self.chiffre
 
 
-str = "1234"
+# lol = Test(25)
 
-print(list(str))
+# a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+# if (n := len(a)) > 10:
+#     print(f"list is too long({n} elements, expected <=10)")
 
 
-# def f(x): return x**2
+# str = "1234"
 
-lolilol = list(filter(lambda x: x < 81, map(lambda x: x**2, range(10))))
+# print(list(str))
 
-print(lolilol)
+
+# # def f(x): return x**2
+
+# lolilol = list(filter(lambda x: x < 81, map(lambda x: x**2, range(10))))
+
+# print(lolilol)
+# b = list(range(10))
+
+# print(b)
+
+# del b[2:7]
+
+# print(b)
+
+# a = 1
+# b = 2
+# c = 3
+# d = 15
+# lol = 10
+
+# if a < b < c < d > lol:
+#     print("ok")
+
+def f():
+    a = 1
+    while True:
+        a *= 2
+        if a > 1_000_000:
+            break
+    return a
+
+
+def positive(lol):
+    for a in lol:
+        if a < 0:
+            continue
+        print(a)
+
+
+positive([1, -5, 25, -47, 5, -5, -7, -9, 2])
