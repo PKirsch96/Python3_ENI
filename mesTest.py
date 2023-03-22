@@ -178,9 +178,9 @@ carnet["Sébastien"] = "0408060204"
 # print(p)
 
 
-# class Test:
-#     def __init__(self, chiffre):
-#         self.chiffre = chiffre
+# # class Test:
+# #     def __init__(self, chiffre):
+# #         self.chiffre = chiffre
 
 #     def __sub__(self, other):
 #         return self.chiffre - other
@@ -193,6 +193,16 @@ carnet["Sébastien"] = "0408060204"
 
 # a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
+# # if (n := len(a)) > 10:
+##      print(f"list is too long({n} elements, expected <=10)")
+
+
+# # str = "1234"
+
+# print(list(str))
+
+# a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
 # if (n := len(a)) > 10:
 #     print(f"list is too long({n} elements, expected <=10)")
 
@@ -200,30 +210,48 @@ carnet["Sébastien"] = "0408060204"
 # str = "1234"
 
 # print(list(str))
-
-
 # # def f(x): return x**2
+
 
 # lolilol = list(filter(lambda x: x < 81, map(lambda x: x**2, range(10))))
 
 # print(lolilol)
-# b = list(range(10))
 
-# print(b)
+# for n in range(2, 10):
 
-# del b[2:7]
+#     print("n = ", n)
 
-# print(b)
+#     x = 2
 
-# a = 1
-# b = 2
-# c = 3
-# d = 15
-# lol = 10
+#     print("x = ", x)
 
-# if a < b < c < d > lol:
-#     print("ok")
+#     while x < n ** (1/2):
 
+#         if n % x == 0:
+
+#             print('%i vaut %i * %i' % (n, x, n/x))
+
+#             break
+
+#         print("x = ", x)
+
+#         x += 1
+
+#         print("x = ", x)
+
+#     else:
+
+#         print('%i est un nombre premier' % n)
+
+#     n += 1
+
+def g():
+    yield 1
+    yield 2
+    yield 3
+
+
+gen = g()
 def f():
     a = 1
     while True:
@@ -233,6 +261,9 @@ def f():
     return a
 
 
+print(next(gen))
+print(next(gen))
+print(next(gen))
 def positive(lol):
     for a in lol:
         if a < 0:
