@@ -273,6 +273,12 @@ carnet["Sébastien"] = "0408060204"
 
 # positive([1, -5, 25, -47, 5, -5, -7, -9, 2])
 
-liste = [a**2 for a in range(10)]
+# liste = [a**2 for a in range(10)]
 
-print(liste)
+# print(liste)
+
+with open('exemple.txt') as fichier:
+    content = fichier.read()
+    print(content)
+
+
