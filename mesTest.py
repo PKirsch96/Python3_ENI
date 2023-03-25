@@ -277,8 +277,10 @@ carnet["Sébastien"] = "0408060204"
 
 # print(liste)
 
-with open('exemple.txt') as fichier:
-    content = fichier.read()
-    print(content)
+# with open('exemple.txt') as fichier:
+#     content = fichier.read()
+#     print(content)
 
+a: int() = "lol"
 
+print(type(a))
