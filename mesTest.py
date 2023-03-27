@@ -287,3 +287,13 @@ carnet["Sébastien"] = "0408060204"
 
 numbers = [1, 2, 3, 4, 5]
 print(numbers[-1:-6:-2])
+
+
+class MaClasse:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+
+yo = MaClasse(color="red", prenom="paul")
+
+print(yo.prenom)
