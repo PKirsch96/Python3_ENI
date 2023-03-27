@@ -281,6 +281,9 @@ carnet["Sébastien"] = "0408060204"
 # #     content = fichier.read()
 # #     print(content)
 
-a: int() = "lol"
+# a: int() = "lol"
 
-print(type(a))
+# print(type(a))
+
+numbers = [1, 2, 3, 4, 5]
+print(numbers[-1:-6:-2])
