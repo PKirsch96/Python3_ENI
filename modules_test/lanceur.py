@@ -2,7 +2,7 @@
 Module servant uniquement à lancer le jeu
 """
 
-from jeu import jouer
+import jeu
 
 if __name__ == "__main__":
-    jouer()
+    jeu.jouer()
