@@ -281,11 +281,6 @@ carnet["Sébastien"] = "0408060204"
 #     content = fichier.read()
 #     print(content)
 
-class MaClasse:
-    def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
+a: int() = "lol"
 
-
-yo = MaClasse(color="red", prenom="paul")
-
-print(yo.prenom)
+print(type(a))
