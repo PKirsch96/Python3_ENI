@@ -277,8 +277,11 @@ carnet["Sébastien"] = "0408060204"
 
 # print(liste)
 
-with open('exemple.txt') as fichier:
-    content = fichier.read()
-    print(content)
+# with open('exemple.txt') as fichier:
+#     content = fichier.read()
+#     print(content)
 
+# def f(**args):
+#     return locals()
 
+# print(f(n=1, c=2, a=10))
